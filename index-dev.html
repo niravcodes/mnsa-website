@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Manasa: Nepali programming language</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131574406-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-131574406-3');
+    </script>
+
+    <!-- todo: combine all assets -->
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:500,700&display=swap&subset=devanagari"
+        rel="stylesheet">
+
+    <link rel="stylesheet" media="all" href="css/main.min.css">
+    <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/monokai.css">
+    <link rel="stylesheet" href="css/simplescrollbars.css">
+
+    <script src="js/codemirror.js"></script>
+    <script src="js/sakshyar.js"></script>
+    <script src="js/simplescrollbars.js"></script>
+    <script src="js/socket.io.slim.js"></script>
+    <script src="js/terminal.js"></script>
+    <script src="js/np-keyboard.js"></script>
+</head>
+
+<body>
+    <header id="navbar" class="containered">
+        <div id="mainLogo"><img src="img/logo2.png"></div>
+        <div id="navlinks">
+            <a href="#" class="navlink">किन</a>
+            <a href="#" class="navlink">कस्ले</a>
+            <a href="#" class="navlink">कसरी</a>
+        </div>
+    </header>
+
+    <div id="introduction" class="containered">
+        <b>मनसा</b> is a statically-typed, object-oriented programming language. It's programs are written in Devanagari
+        script
+        using <b>Nepali</b> language constructs. Write fluid and expressive programs in नेपाली.
+    </div>
+
+    <div id="salientFeatures" class="containered">
+        <div class="iconBox">
+            <div class="padder"><img src="img/house-icon.png"></div>
+            <div class="text">Object-Oriented</div>
+        </div>
+        <div class="iconBox">
+            <div class="padder"><img src="img/nepal-icon.png"></div>
+            <div class="text">नेपाली</div>
+        </div>
+        <div class="iconBox">
+            <div class="padder"><img src="img/selfcompile-icon.png"></div>
+            <div class="text">Self-compiling</div>
+        </div>
+        <div class="iconBox">
+            <div class="padder"><img src="img/system-icon.png"></div>
+            <div class="text">System programming</div>
+        </div>
+    </div>
+    <div id="codedemo" class="containered">
+        <div id="kbdlayout">
+            <div class="flipswitch" id="entonpswitch">
+                <input type="checkbox" class="flipswitch-cb" id="fs" checked>
+                <label class="flipswitch-label" for="fs">
+                    <div class="flipswitch-inner"></div>
+                    <div class="flipswitch-switch"></div>
+                </label>
+            </div>
+
+            <button class="btnInText" id="tabOutKeyboard" onclick="np_slideout()"><img
+                    src="img/keyboard-icon.png"></button>
+
+            <a href="https://nirav.com.np" class="button-like">Help</a>
+        </div>
+        <div class="demopane">
+            <div id="codemirror_container">
+
+                <textarea id="codeeditor">'नमस्ते नेपाल' लेख।</textarea>
+
+                <div id="Terminal">
+                    <pre> </pre>
+                    <input id="input" autofocus>
+                </div>
+            </div>
+
+            <button class="runButton" id="CompileButton" onclick="submit_compile()">चलाउनुहोस<img
+                    src="img/arrow-01.png"></button>
+        </div>
+
+        <div class='demoplane'>
+            <div id="tutorial" container>
+                <div class="slide">
+                    <div class="title">नमस्ते नेपाल‍!</div>
+                    <div class="text">
+                        Want to try मनसा? It's easy. Just type in code in the code editor, then press the <span
+                            class="btnInText" onclick="submit_compile()">चलाउनुहोस</span> button.</p>
+                        <br>
+                        If you run the default program, it should display 'नमस्ते नेपाल'.
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="title">नेपाली टाइपीङ्ग</div>
+                    <div class="text">
+                        <p>
+                            If you have a Nepali keyboard layout installed, then you should be able to type in Nepali
+                            normally.
+                        </p>
+                        <br>
+                        <p>
+                            Don't worry if you don't have a keyboard installed. Click on the <span
+                                class="btnInText">en→ने</span> button on the left.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="title">यो टाइप गरीहेर्नुस</div>
+                    <div class="text">
+                        <p>
+                            अङ्क क ।<br>
+                            क पढ ।<br>
+                            (क = ४) भए<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;क लेख ॥<br>
+                        </p>
+                        <p>
+                            Then press the <span class="btnInText" onclick="submit_compile()">चलाउनुहोस</span> button.
+                            Easy, right?
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="title">प्रारम्भ</div>
+                    <div class="text">
+                        <p>
+                            This is the end of our micro tutorial. But your journey has just begun.
+                        </p>
+                        <p>
+                            You can now go and read the beginner's tutorials, or dive into the documentation.
+                        </p>
+                        <p>
+                            If you're feeling particularly adventurous, head over to our github and help us out.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div id="scrollarrow" onclick="scrolltoview()"><img src="img/arrow-01.png"></div>
+        </div>
+    </div>
+
+
+    <div id="updates" class="containered">
+        <div class="title">Stream</div>
+        <p>
+            मनसा is currently being developed. In this section of the website, we'll post a stream of updates and
+            events, as well as to-dos and other things. In the updates below, the pronoun 'I' will refer to <a
+                href="https://nirav.com.np">Nirav</a>.
+        </p>
+
+        <p>
+            <b>Oct 26, 12:02 AM:</b>
+            I've decided to move this project to a good framework because there 
+            are a lot of moving parts and states to keep track of, and this 
+            complexity will only increase with time. VueJS is a good choice
+            but I'd like to search for something even more lightweight if it's 
+            available. 
+        </p>
+        <p>
+            Other than that, I'm experimenting with techniques load-balancing 
+            techniques and caching ideas for the server. But that will take 
+            significantly longer. The results of the stress-test were not 
+            so promising. 
+        </p>
+
+        <p>
+            <b>Oct 23, 11:32 PM:</b> I did the Keyboard Layout changer without any input from Sauhard, and it looks
+            great!
+            I also did some work in the backend, and did some preliminary stress testing on the servers.
+        </p>
+        <p>
+            I need to reevaluate compactibility of all JS I've written and either fix them or introduce polyfills.
+            Responsiveness is also
+            an issue right now. Speaking of responsiveness, Phone Browsers don't trigger onkeypress, so I need to make
+            massive changes to
+            the keyboard handling module. Once I've done that, though, I should be able to package it as a neat little
+            JS library and throw
+            it into the interwebs.
+        </p>
+        <p>
+            I'm also considering moving this whole project to VueJS. Ahhh, vueJS. Why didn't I use you
+            in the first place?
+        </p>
+        <p>
+            <b>Oct 23, TODO</b>:
+            Need to design the keyboard layout swithcher. Need to find place for reporting all kinds of errors (probably
+            inside the terminal).
+            Then, back to studying for Back exams (sedlyf). Caching doesn't work as intended. I need to work on that.
+            <p>When a failed program is recompiled, a previous
+                successfully compiled program is run. Also, I need to write code to buffer-and-flush compiled program
+                output. Otherwise
+                it's incredibly easy for a long loop that writes stdin to jam the socket.io server and client.
+            </p>
+        </p>
+        <p>
+            <b>Oct 22, 9:03</b>:
+            The new logo is placed where the old one was. The terminal has been made. Today, I'll finish in-browser
+            Nepali keyboard.
+            Sauhard is trying to design a new look for the site in Adobe XD.
+        </p>
+        <p>
+            <b>Oct 22, TODO</b>: I need to get the backend infrastructure to work seamlessly with the code editor on
+            this web page.
+        </p>
+        <p>
+            Sauhard will design a nice looking in-browser keyboard layout switcher(We'll call it KLS). I have already
+            written
+            most of the code for the KLS. I will integrate the KLS to this website, and realize the design in HTML.
+        </p>
+        <p>
+            Because the example code on the homepage is going to be executed much more than user-written code, I'll need
+            to figure
+            out some way to cache outputs of programs in the memory.
+        </p>
+
+        <p>
+            <b>Oct 21, 11:40 AM</b>: I bought the mnsa.cc domain name today, and started writing code. I've decided that
+            we'll tackle
+            this project iteratively. So, instead of spending months trying to design the perfect layout, I made a rough
+            Adobe XD layout
+            and started coding.
+        </p>
+        <p>
+            Sauhard has been working on a better logo, because the one currently on the page could do with a makeover.
+            The new logo
+            is lovely.
+        </p>
+        <p>
+            On the backend side, I have already prototyped a rough system for running code in the browser, complete with
+            security, overload
+            protection and socket.io based STDIN/STDOUT pipes. Most of my research on security is documented
+            <a href="https://nirav.com.np/2019/10/08/sandboxing-small-executables-on-linux-many-tries.html">here</a>
+            (tl;dr I used minijail).
+        </p>
+        <p>
+            The language itself is being re-imagined. A programming language in 2019 doesn't have to be *that* low
+            level. Strings should be
+            a primitive data-type and arrays should be bound-checked.
+        </p>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+@import "globals";
+@import "type";
+@import "toggleswitch";
+
+*{margin:0; padding:0;}
+
+.containered{
+    width: $mContainerHeight;
+    margin:0 auto;
+}
+.runButton{
+    $height: 30px;
+
+    padding:10px 20px;
+    color: $cDarkBlue;
+    background-color:$cBaseBlue;
+    border:0;
+    border-bottom:solid 4px $cDarkBlue;
+    border-bottom-left-radius: $brButtonNormal;
+    border-bottom-right-radius: $brButtonNormal;
+
+    font-family:$fMain;
+    font-weight: 700;
+    font-size:20px;
+    text-align:left;
+
+    line-height: $height;
+
+    &:active{
+        border-bottom:solid 1px $cDarkBlue ;
+        border-top:solid 3px $cCodemirrorBG; 
+    }
+
+    img{
+        height:24px;
+        float:right;
+    }
+}
+
+#navbar{
+    width:$mContainerHeight;
+    height:$mLogoHeight;
+    margin: 80px auto;
+    position: relative;
+
+    #navlinks{
+        position: absolute;
+        // bottom:(0.216667*$mLogoHeight);
+        bottom: 0;
+        right: 0;
+        display: block;
+
+        .navlink{
+            color: $cDarkBlue;
+            background-color: $cBaseBlue; 
+            text-decoration:none;
+            line-height: $fsButtonNormal;
+            font-size: $fsButtonNormal;
+            
+            border-radius: $brButtonNormal;
+
+            display:inline-block;
+            padding: 10px 33px;
+            margin: 0 20px;
+
+            &:hover{
+                background: $cDarkBlue;
+                color:#fff;
+            }
+        }
+    }
+}
+
+#mainLogo{
+    img{
+        height:$mLogoHeight;
+    }
+}
+
+#introduction{
+    display:block;
+    font-size: 22px;
+}
+
+#salientFeatures{
+    font-size:22px;
+    display:flex;
+    justify-content: space-between;
+    margin-top:30px;
+
+    
+    .iconBox{
+        display:inline-block;
+        text-align:center;
+        width:200px;
+        margin-bottom:50px;
+
+        margin-left:-30px; // _HACK! to make the icons line up
+
+        img{
+            width:40%;
+        }
+        .padder{
+            width:100%;
+            height:85%;
+        }
+        .text{
+            display:block;
+        }
+    }
+}
+
+
+#codedemo{
+    margin-bottom:50px;
+    margin-top:50px;
+    display:flex;
+    justify-content: space-between;
+
+    position:relative;
+
+    #kbdlayout{
+        display: block;
+        position:absolute;
+        top:17px;
+        // left:(-34px-50px);
+        left:0px;
+        text-align: center;
+        background-color:$cBaseBlue;
+
+        width:80px;
+
+        border-bottom-left-radius: $brButtonNormal;
+        border-bottom: solid 2px $cDarkBlue;
+
+        transition-property: all;
+        transition-duration:1s;
+        #tabOutKeyboard{
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            padding-top:6px;
+            padding-bottom:1px;
+            padding-left:7px;
+            width:34px;
+
+            outline:none;
+
+            position:absolute;
+            top:0;
+            left:-34px;
+
+
+            img{
+                width:20px;
+            }
+        }
+    }
+
+    #codemirror_container{
+        padding:20px 0;
+        background-color:$cCodemirrorBG;
+        border-top-right-radius: $brButtonNormal;
+        border-top-left-radius: $brButtonNormal;
+        height:200px;
+
+    }
+    .CodeMirror{
+        font-family: $fMain;
+        font-size:17px;
+        width:100%;
+        height:100%;
+    }
+    #CompileButton{
+        width:100%;
+    }
+
+    #tutorial{
+        padding:10px 0px;
+        padding-top:0;
+        height:230px;
+        display:block;
+        overflow:hidden;
+        border-bottom: dotted 3px $cDarkBlue;
+        margin:0 30px;
+
+        .slide{
+
+            padding:10px 20px;
+            height:100%;
+            display:block;
+
+
+            .title{
+                font-size:29px;
+                margin-bottom:10px;
+            }
+            .text{
+                font-size:18px;
+                p{
+                    margin-top:5px;
+                }
+            }
+        }
+    }
+    #scrollarrow{ text-align:center;
+        img{
+            width:12px;
+            transform: rotate(90deg); 
+            margin-top:10px;
+        }
+    }
+}
+.demopane{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+}
+#Terminal{
+    padding:20px 20px; 
+    box-sizing: border-box;
+    background-color:$cCodemirrorBG;
+    border-top-right-radius: $brButtonNormal;
+    border-top-left-radius: $brButtonNormal;
+
+    height:240px;
+    width:100%;
+
+    position:absolute;
+    top:0;
+    left:0;
+
+    color:$cBaseBlue;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    font-size:16px;
+    input{
+        background: none;
+        color:#fff;
+        font-size: 16px;
+        font-family: $fMain;
+        border:none;
+        outline:none;
+    }
+    pre{
+        font-family: $fMain;
+    }
+    .terminalmessage{
+        color:#fff;
+    }
+}
+#entonpswitch{
+    margin: 2px auto;
+}
+
+
+#updates{
+    margin-top:60px;
+    margin-bottom:150px;
+    .title{
+        font-size:30px;
+    }
+    p{
+        margin-top:15px;
+    }
+}
+
+#footer{
+    font-size: 22px;
+    font: $fMain;
+    padding: 10px;
+    text-align:center;
+    a{
+        color: $cDarkBlue;
+        text-decoration:none;
+        display:block;
+    }
+}

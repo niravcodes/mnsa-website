@@ -1,0 +1,43 @@
+a{
+    color:#94fda6;
+}
+
+body{
+    font-family: $fMain;
+    font-size:20px;
+    color: $cDarkBlue;
+}
+
+.btnInText{
+    cursor: pointer;
+    font-size: 14px;
+    background-color:$cBaseBlue; 
+    display: inline-block;
+    padding:1px 4px;
+
+    border:0;
+    border-radius:4px;
+    border-bottom: solid 2px $cDarkBlue;
+    font-family: $fMain;
+
+    &:active{
+        border-bottom: solid 1px $cDarkBlue;
+        border-top:solid 1px #fff;
+    }
+}
+.button-like{
+    background:#fff;
+    color: $cDarkBlue;
+    text-decoration:none;
+    margin:5px auto;
+    display: block;
+    width:60px;
+    border-radius: $brButtonNormal/2;
+
+    border-bottom: solid 3px $cDarkBlue;
+
+    &:active{
+        border-bottom: solid 1px $cDarkBlue;
+        border-top:solid 2px $cBaseBlue;
+    }
+}

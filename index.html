@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html> 
+<head>
+    <meta charset="UTF-8">
+    <title>मनसा - the Nepali programming language</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131574406-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-131574406-3');
+    </script>
+
+    <!-- todo: combine all assets -->
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:500,700&display=swap&subset=devanagari"
+        rel="stylesheet">
+
+    <link rel="stylesheet" media="all" href="css/main.min.css">
+    <link rel="stylesheet" href="css/codemirror.css">
+    <link rel="stylesheet" href="css/monokai.css">
+    <link rel="stylesheet" href="css/simplescrollbars.css">
+
+    <script src="js/all_minified.js"></script>
+</head>
+
+<body>
+    <header id="navbar" class="containered">
+        <div id="mainLogo"><img src="img/logo2.png"></div>
+        <div id="navlinks">
+            <a href="#" class="navlink">किन</a>
+            <a href="#" class="navlink">कस्ले</a>
+            <a href="#" class="navlink">कसरी</a>
+        </div>
+    </header>
+
+    <div id="introduction" class="containered">
+        <b>मनसा</b> is a statically-typed, object-oriented programming language. It's programs are written in Devanagari
+        script
+        using <b>Nepali</b> language constructs. Write fluid and expressive programs in नेपाली.
+    </div>
+
+    <div id="salientFeatures" class="containered">
+        <div class="iconBox">
+            <div class="padder"><img src="img/house-icon.png"></div>
+            <div class="text">Object-Oriented</div>
+        </div>
+        <div class="iconBox">
+            <div class="padder"><img src="img/nepal-icon.png"></div>
+            <div class="text">नेपाली</div>
+        </div>
+        <div class="iconBox">
+            <div class="padder"><img src="img/selfcompile-icon.png"></div>
+            <div class="text">Self-compiling</div>
+        </div>
+        <div class="iconBox">
+            <div class="padder"><img src="img/system-icon.png"></div>
+            <div class="text">System programming</div>
+        </div>
+    </div>
+    <div id="codedemo" class="containered">
+        <div id="kbdlayout">
+            <div class="flipswitch" id="entonpswitch">
+                <input type="checkbox" class="flipswitch-cb" id="fs" checked>
+                <label class="flipswitch-label" for="fs">
+                    <div class="flipswitch-inner"></div>
+                    <div class="flipswitch-switch"></div>
+                </label>
+            </div>
+
+            <button class="btnInText" id="tabOutKeyboard" onclick="np_slideout()"><img
+                    src="img/keyboard-icon.png"></button>
+
+            <a href="https://nirav.com.np" class="button-like">Help</a>
+        </div>
+        <div class="demopane">
+            <div id="codemirror_container">
+
+                <textarea id="codeeditor">"नमस्ते नेपाल" लेख।</textarea>
+
+                <div id="Terminal">
+                    <pre> </pre>
+                    <input id="input" autofocus>
+                </div>
+            </div>
+
+            <button class="runButton" id="CompileButton" onclick="submit_compile()">चलाउनुहोस<img
+                    src="img/arrow-01.png"></button>
+        </div>
+
+        <div class='demoplane'>
+            <div id="tutorial" container>
+                <div class="slide">
+                    <div class="title">नमस्ते नेपाल‍!</div>
+                    <div class="text">
+                        Want to try मनसा? It's easy. Just type in code in the code editor, then press the <span
+                            class="btnInText" onclick="submit_compile()">चलाउनुहोस</span> button.</p>
+                        <br>
+                        If you run the default program, it should display 'नमस्ते नेपाल'.
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="title">नेपाली टाइपीङ्ग</div>
+                    <div class="text">
+                        <p>
+                            If you have a Nepali keyboard layout installed, then you should be able to type in Nepali
+                            normally.
+                        </p>
+                        <br>
+                        <p>
+                            Don't worry if you don't have a keyboard installed. Click on the <span
+                                class="btnInText">en→ने</span> button on the left.
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="title">यो टाइप गरीहेर्नुस</div>
+                    <div class="text">
+                        <p>
+                            अङ्क क = १० ।<br>
+                            (क > ०) भएसम्म<br>
+                            &nbsp;&nbsp;क = क - १।<br>
+			    &nbsp;&nbsp;क*क लेख ।" " लेख ।<br>
+			    ।।<br>
+                        </p>
+                        <p>
+                            Then press the <span class="btnInText" onclick="submit_compile()">चलाउनुहोस</span> button.
+                            Easy, right?
+                        </p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="title">प्रारम्भ</div>
+                    <div class="text">
+                        <p>
+                            This is the end of our micro tutorial. But your journey has just begun.
+                        </p>
+                        <p>
+                            You can now go and read the beginner's tutorials, or dive into the documentation.
+                        </p>
+                        <p>
+                            If you're feeling particularly adventurous, head over to our github and help us out.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div id="scrollarrow" onclick="scrolltoview()"><img src="img/arrow-01.png"></div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <a href="https://nirav.com.np/">nirav.com.np</a>
+    </div>
+
+    <script>
+    var compileButton=document.getElementById("CompileButton"),mnsa=document.getElementById("codeeditor"),editor=CodeMirror.fromTextArea(mnsa,{theme:"monokai",mode:"sakshyar",lineNumbers:!0,scrollbarStyle:"overlay",cursorHeight:.8});window.addEventListener("load",function(){editor.refresh()});np_keyboard_init(editor);var np_kbd_switch_button=document.getElementById("entonpswitch").getElementsByTagName("input")[0];np_kbd_switch_button.addEventListener("change",function(){np_switchkbd()});
+var socket=io.connect("http://crnr.mnsa.cc"),connection_okay=!1,programRunning=!1,totalTutorials=4,currentTutorial=0;function scrolltoview(){currentTutorial=(currentTutorial+1)%totalTutorials;document.getElementsByClassName("slide")[currentTutorial].scrollIntoView({behavior:"smooth",block:"nearest"})}
+function submit_compile(){connection_okay&&!programRunning&&""!==editor.getValue()?(socket.emit("codesend",{code:editor.getValue()}),terminal_refresh(),hide_editor(),programRunning=!0,compileButton.innerHTML="\u0930\u094b\u0915\u094d\u0928\u0941\u0939\u094b\u0938<img src='img/arrow-01.png'>"):programRunning&&(compileButton.innerHTML="\u091a\u0932\u093e\u0909\u0928\u0941\u0939\u094b\u0938<img src='img/arrow-01.png'>",programRunning=!1,show_editor())}socket.on("over5kb",function(a){alert("You sent more code than our server likes to handle. Refresh the page and try again. Brevity is the soul of wit.")});
+socket.on("toolongsincelasttalk",function(a){alert("Server timed out. Refresh the page")});socket.on("toomanyconnections",function(a){alert("Server overloaded")});socket.on("status",function(a){a.okay&&(connection_okay=!0);a.executionFinished&&terminal_allow_quit()});terminal=document.getElementById("Terminal");terminal_init(terminal,socket);show_editor();function hide_editor(){editor.getWrapperElement().style.visibility="hidden";terminal.style.visibility="visible";terminal.focus()}
+function show_editor(){editor.getWrapperElement().style.visibility="visible";terminal.style.visibility="hidden";editor.focus()}var np_slideout_activated=!1;function np_slideout(){np_slideout_activated?document.getElementById("kbdlayout").style.left="0px":document.getElementById("kbdlayout").style.left="-77px";np_slideout_activated=!np_slideout_activated};
+    </script>
+</body>
+
+</html>
